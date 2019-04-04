@@ -24,5 +24,8 @@
     <ClCompile Include="2to10.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="gameScissorsRockPaper.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
