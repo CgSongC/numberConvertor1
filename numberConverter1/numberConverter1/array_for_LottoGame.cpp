@@ -19,16 +19,17 @@ int main()
 	int iInput,iaInput;
 	cout << "Please select a number of Lotto line [between 1 to 7]:";
 	cin >> iInput;
-	iInput *= 6;
+	//iInput %= 45;
 	// AI Input
-	iaInput = rand() % 7 + 1;
-	iaInput *= 6;
+	iaInput = rand() % 45 + 1;
+	//iaInput *= 6;
 
 	
 	for (int i = 0; i < LOTTO; ++i)
 	{
 		iLotto[i] = i + 1;
 	}
+
 	// Shuffle
 	int iTemp, iIdx1, iIdx2;
 	for (int i = 0; i < LOTTO * 4; ++i)
@@ -54,7 +55,15 @@ int main()
 	//Asignment a number of user input
 	for (int i = 0; i < 6; i++)
 	{
-		iuSort[i] = iLotto[iInput + i];
+		if ((iInput + i) <= 45)
+		{
+
+			iuSort[i] = iLotto[iInput + i];
+		}
+		else if ((iInput+i) > 45) 
+		{
+			iuSort[i] = iLotto[i];
+		}
 	}
 	//Sort User Number
 	for (int i = 1; i < 6; ++i)
@@ -63,7 +72,7 @@ int main()
 		{
 			if (iuSort[j] > iuSort[i])
 			{
-				int iTemp = iuSort[i];
+				int iTemp = iuSort[j];
 				iuSort[j] = iuSort[i];
 				iuSort[i] = iTemp;
 			}
@@ -74,8 +83,23 @@ int main()
 	{
 		iaSort[i] = iLotto[iaInput + i];
 	}
+
+	//Sort AI Number
+	for (int i = 1; i < 6; ++i)
+	{
+		for (int j = 0; j < i + 1; ++j)
+		{
+			if (iaSort[j] > iaSort[i])
+			{
+				int iTemp = iaSort[j];
+				iaSort[j] = iaSort[i];
+				iaSort[i] = iTemp;
+			}
+		}
+	}
+
 	// User's number
-	cout << "\nYour number is ";
+	cout << "\nYour   number  is ";
 
 	for (int i = 0; i < 6; ++i)
 	{
@@ -83,7 +107,7 @@ int main()
 	}
 	// Winning number
 	cout << endl;
-	cout << "This week's winning number is ";
+	cout << "winning number is ";
 	for (int i = 0; i < 6; ++i)
 	{
 		cout << setw(5) << iaSort[i];
