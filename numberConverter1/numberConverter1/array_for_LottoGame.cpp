@@ -55,12 +55,12 @@ int main()
 	//Asignment a number of user input
 	for (int i = 0; i < 6; i++)
 	{
-		if ((iInput + i) <= 45)
+		if ((iInput + i) < 45)
 		{
 
 			iuSort[i] = iLotto[iInput + i];
 		}
-		else if ((iInput+i) > 45) 
+		else if ((iInput+i) >= 45) 
 		{
 			iuSort[i] = iLotto[i];
 		}
